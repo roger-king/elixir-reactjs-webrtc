@@ -1,0 +1,6 @@
+LOG:  database system was shut down at 2017-03-18 21:12:01 EDT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  role "roger" already exists
+STATEMENT:  CREATE USER roger with SUPERUSER
