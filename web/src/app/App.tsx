@@ -2,18 +2,10 @@
 
 import * as React from "react";
 
-interface AppProps {
-    children: Object
-}
-
-export class App extends React.Component<AppProps, void>{
-    constructor(props: AppProps){
-        super(props);
-        this.apiURL = "http://localhost:3000";
-    }
+export class App extends React.Component<void, void>{
     render(){
         return(
-            <div>
+            <div className="app-container">
                 {this.props.children}
             </div>
         )
