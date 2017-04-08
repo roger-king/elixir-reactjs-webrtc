@@ -11,7 +11,7 @@ import combineReducers from './app/data/Reducers';
 import { App } from './app/App';
 import { HomeComponent as Home } from './app/scenes/Home/Home.Component';
 
-const browserHistory =createBrowserHistory();
+const browserHistory =  createBrowserHistory();
 
 // Create Store
 const environment: any = window || this;

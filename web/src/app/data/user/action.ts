@@ -1,4 +1,8 @@
 "use strict";
+import Action  from "./../Action";
+
+export const LOGIN_ACTION = "LOGIN_ACTION";
+export type LOGIN_ACTION = { username: string, password: string};
 
 interface User {
     username: string,
@@ -14,4 +18,6 @@ const INITIAL_STATE: User = {
     status: "offline"
 };
 
+export function login(username: string, password: string): Action<LOGIN_ACTION>{
 
+}
