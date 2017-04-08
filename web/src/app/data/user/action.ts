@@ -19,5 +19,11 @@ const INITIAL_STATE: User = {
 };
 
 export function login(username: string, password: string): Action<LOGIN_ACTION>{
-
+    return {
+        type: LOGIN_ACTION,
+        payload:{
+            username: username,
+            password: password
+        }
+    }
 }
