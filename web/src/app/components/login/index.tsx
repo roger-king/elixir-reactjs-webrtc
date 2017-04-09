@@ -11,8 +11,19 @@ interface IProps {
     credentials: ILogin,
     doLogin: ActionCreator<ILoginAction>
 }
+function mapStateToProps(state){
+    return{
+        credentials: state.credentials
+    }
+}
 
-export class LoginComponent extends React.Component<IProps, {}>{
+function mapDispatchToProps(dispatch){
+    return{
+        doLogin: (credentials) => dispatch(doLogin(credentials))
+    }
+}
+
+class LoginComponent extends React.Component<IProps, void>{
     private handleLogin(username: string, password: string){
         const doLogin = this.props.doLogin;
 
@@ -58,3 +69,5 @@ export class LoginComponent extends React.Component<IProps, {}>{
         )
     }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);
