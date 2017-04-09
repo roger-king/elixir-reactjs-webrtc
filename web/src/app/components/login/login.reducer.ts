@@ -1,12 +1,12 @@
 "use strict";
 
-import Action from './../Action';
+import Action from '../../Action';
 import {API_URL} from './../../Constants';
-import {LOGIN_ACTION} from './action';
+import {LOGIN_ACTION} from './login.action';
 import { handleActions } from 'redux-actions';
 import axios from 'axios';
 
-const reducer = handleActions({
+export const reducer = handleActions({
     LOGIN_ACTION: (state, action: Action<LOGIN_ACTION>) => {
         axios({
             method: 'post',
@@ -18,7 +18,5 @@ const reducer = handleActions({
         }).then(function(response){
             return response;
         })
-   }
+    }
 }, {});
-
-export default reducer;

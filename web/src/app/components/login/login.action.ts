@@ -1,5 +1,5 @@
 "use strict";
-import Action  from "./../Action";
+import Action  from "./../../Action";
 
 export const LOGIN_ACTION = "LOGIN_ACTION";
 export type LOGIN_ACTION = { username: string, password: string};
