@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import { reducer as LoginReducer}  from './components/login/login.reducer';
+import { reducer } from 'redux-connect';
+import { loginReducer } from './components/login/login.reducer';
 
 export default combineReducers({
-    LoginReducer: LoginReducer
+    login: loginReducer,
+    reduxAsyncConnect: reducer
 });

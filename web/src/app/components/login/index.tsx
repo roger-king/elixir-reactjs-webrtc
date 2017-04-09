@@ -12,7 +12,7 @@ interface IProps {
     doLogin: ActionCreator<ILoginAction>
 }
 
-export class LoginContainer extends React.Component<IProps, void>{
+export class LoginComponent extends React.Component<IProps, {}>{
     private handleLogin(username: string, password: string){
         const doLogin = this.props.doLogin;
 

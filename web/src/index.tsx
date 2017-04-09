@@ -1,25 +1,23 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {Router, Route} from 'react-router';
+import {Router} from 'react-router';
 import {createBrowserHistory} from 'history';
 import {Provider} from 'react-redux';
-import { createStore, applyMiddleware, compose} from 'redux';
-import thunk from 'redux-thunk';
-import combineReducers from './app/Reducers';
-// Import Application Components
+import { configureStore } from './app/redux/store';
+import { ReduxAsyncConnect } from 'redux-connect';
+
+// Import Application Route
 import routes from './app/Routes';
 
 const browserHistory =  createBrowserHistory();
 
 // Create Store
-const environment: any = window || this;
-const store = createStore(combineReducers, compose(
-    applyMiddleware(thunk),
-    //environment.devToolsExtension ? environment.devToolsExtension() : f => f
-));
+const store = configureStore(
+    browserHistory
+);
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={store} key="provider">
         <Router history={browserHistory}>
             {routes}
         </Router>
