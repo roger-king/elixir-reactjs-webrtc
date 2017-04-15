@@ -8,8 +8,7 @@ import {Middleware} from "redux";
 export function configureStore(history, initialState?: IStore): Store<IStore> {
 
     let middlewares: Middleware[] = [
-        routerMiddleware(history),
-        thunk,
+        routerMiddleware(history)
     ];
 
     const composeEnhancers = (

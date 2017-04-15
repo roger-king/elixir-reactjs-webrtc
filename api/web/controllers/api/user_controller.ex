@@ -4,6 +4,7 @@ defmodule Huddle.UserController do
   alias Huddle.User
 
   def create(conn, params) do
+    IO.puts "Creating Users"
     changeset = User.registration_changeset(%User{}, params)
 
     case Repo.insert(changeset) do

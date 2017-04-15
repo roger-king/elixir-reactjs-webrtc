@@ -1,73 +1,65 @@
-"use strict";
 import * as React from 'react';
-import { connect } from 'react-redux';
-//import { asyncConnect } from 'redux-connect';
-import {ActionCreator} from "redux";
-import {doLogin} from './login.reducer';
-import {ILogin, ILoginAction} from "./login.model";
-import {Button, Col, ControlLabel, Form, FormControl, FormGroup} from 'react-bootstrap';
+import {loginAction} from './login.actions';
+import {Row, Col, PageHeader, Form, FormGroup, FormControl, ControlLabel, Button} from 'react-bootstrap';
 
-interface IProps {
-    credentials: ILogin,
-    doLogin: ActionCreator<ILoginAction>
-}
-function mapStateToProps(state){
-    return{
-        credentials: state.credentials
+export class LoginComponent extends React.Component <any, any>{
+    constructor(props){
+        super(props);
+
+        this.state = {
+            username: '',
+            password: ''
+        }
+
     }
-}
 
-function mapDispatchToProps(dispatch){
-    return{
-        doLogin: (credentials) => dispatch(doLogin(credentials))
-    }
-}
-
-class LoginComponent extends React.Component<IProps, void>{
-    private handleLogin(username: string, password: string){
-        const doLogin = this.props.doLogin;
-
-        const credentials = {
+    login(username: string, password: string){
+        let credentials = {
             username: username,
             password: password
         };
 
-        doLogin(credentials);
+        loginAction(credentials).then(function(response){
+            console.log(response);
+        });
     }
 
-    public render(){
-        const credentials = this.props.credentials;
+    handleChange(key, event){
+        this.setState({...this.state, [key]: event.target.value});
+    }
+
+    render(){
+
         return(
-            <Form horizontal>
-                <FormGroup controlId="formHorizontalEmail">
-                    <Col componentClass={ControlLabel} sm={2}>
-                        User Name
-                    </Col>
-                    <Col sm={10}>
-                        <FormControl type="text" placeholder="User Name" {...credentials.username}/>
-                    </Col>
-                </FormGroup>
+            <Row>
+                <Col>
+                    <PageHeader className="text-center">Login</PageHeader>
+                    <Form horizontal>
+                        <FormGroup controlId="formHorizontalEmail">
+                            <Col sm={12}>
+                                <FormControl type="email" placeholder="Email" value={this.state.username} onChange={this.handleChange.bind(this,'email')}/>
+                            </Col>
+                        </FormGroup>
 
-                <FormGroup controlId="formHorizontalPassword">
-                    <Col componentClass={ControlLabel} sm={2}>
-                        Password
-                    </Col>
-                    <Col sm={10}>
-                        <FormControl type="password" placeholder="Password" {...credentials.password}/>
-                    </Col>
-                </FormGroup>
+                        <FormGroup controlId="formHorizontalPassword">
+                            <Col sm={12}>
+                                <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange.bind(this,'password')}/>
+                            </Col>
+                        </FormGroup>
 
-                <FormGroup>
-                    <Col smOffset={2} sm={10}>
-                        <Button type="submit" onClick={this.handleLogin.bind(this, credentials.username, credentials.password)}>
-                            Sign in
-                        </Button>
-                        <a href=""> Create an account.</a>
-                    </Col>
-                </FormGroup>
-            </Form>
-        )
+                        <FormGroup>
+                            <Col sm={10}>
+                                <Button onClick={this.login.bind(this, this.state.username, this.state.password)}>
+                                    Sign in
+                                </Button>
+                            </Col>
+                            <Col sm={2}>
+                                <a href="/signup"> Create an account.</a>
+                            </Col>
+                        </FormGroup>
+                    </Form>
+                </Col>
+            </Row>
+        );
     }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);

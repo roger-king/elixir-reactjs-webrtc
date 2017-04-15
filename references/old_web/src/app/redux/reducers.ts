@@ -4,8 +4,7 @@ import { loginReducer } from './../components/login/login.reducer';
 import {IStore} from './IStore';
 
 const rootReducer: Reducer<IStore> = combineReducers<IStore>({
-    login: loginReducer,
-    reduxAsyncConnect: reducer
+    login: loginReducer
 });
 
 export default rootReducer;

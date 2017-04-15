@@ -1,16 +1,14 @@
-"use strict";
-import * as React from "react";
-import {Col} from "react-bootstrap";
-import './app.scss';
+import * as React from 'react';
+import {Grid, Row} from 'react-bootstrap';
 
-export class App extends React.Component<void, void>{
-    render(){
-        return(
+export class AppContainer extends React.Component<any, any> {
+    render() {
+        return (
             <section className="app-container">
-                <Col xs={12} md={8}>
+                <Grid>
                     {this.props.children}
-                </Col>
+                </Grid>
             </section>
-        )
+        );
     }
 }
