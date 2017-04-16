@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Login, Navbar} from './../../components';
-import "./home.scss";
+import "./login.container.scss";
 
-export class HomeContainer extends React.Component<any, any> {
+export class LoginContainer extends React.Component<any, any> {
     constructor(props) {
         super(props);
     }

@@ -48,7 +48,7 @@ gulp.task('serve', function () {
         port: process.env.PORT || 8000,
         open: false,
         server: {baseDir: root},
-        ghostMode: false,
+        https: false,
         middleware: [historyApiFallback(), webpackDevMiddelware(compiler, {
             stats: {
                 colors: colorsSupported,

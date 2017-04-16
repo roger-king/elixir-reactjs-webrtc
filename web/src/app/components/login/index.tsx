@@ -1,5 +1,8 @@
 import * as React from 'react';
+import { reduxForm } from 'redux-form';
+import {User} from './../../actions';
 import {loginAction} from './login.actions';
+import {ILoginProps} from './login.interface';
 import {Row, Col, PageHeader, Form, FormGroup, FormControl, ControlLabel, Button} from 'react-bootstrap';
 
 export class LoginComponent extends React.Component <any, any>{
@@ -7,21 +10,26 @@ export class LoginComponent extends React.Component <any, any>{
         super(props);
 
         this.state = {
-            username: '',
+            email: '',
             password: ''
         }
 
     }
 
-    login(username: string, password: string){
+    login(email: string, password: string){
         let credentials = {
-            username: username,
+            email: email,
             password: password
         };
+        let user = new User();
 
-        loginAction(credentials).then(function(response){
-            console.log(response);
-        });
+        loginAction(credentials)
+            .then(function success(response){
+                console.log('success', response);
+                window.location.href = '/';
+            },function handleError(response){
+                console.log('error', response);
+            });
     }
 
     handleChange(key, event){
@@ -29,32 +37,34 @@ export class LoginComponent extends React.Component <any, any>{
     }
 
     render(){
-
+        const { handleSubmit, submitting} = this.props;
         return(
             <Row>
                 <Col>
                     <PageHeader className="text-center">Login</PageHeader>
-                    <Form horizontal>
+                    <Form
+                        horizontal
+                    >
                         <FormGroup controlId="formHorizontalEmail">
                             <Col sm={12}>
-                                <FormControl type="email" placeholder="Email" value={this.state.username} onChange={this.handleChange.bind(this,'email')}/>
+                                <FormControl type="email" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange.bind(this,'email')}/>
                             </Col>
                         </FormGroup>
 
                         <FormGroup controlId="formHorizontalPassword">
                             <Col sm={12}>
-                                <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange.bind(this,'password')}/>
+                                <FormControl type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange.bind(this,'password')}/>
                             </Col>
                         </FormGroup>
 
                         <FormGroup>
-                            <Col sm={10}>
-                                <Button onClick={this.login.bind(this, this.state.username, this.state.password)}>
+                            <Col sm={6}>
+                                <Button disabled={submitting} onClick={this.login.bind(this, this.state.email, this.state.password)}>
                                     Sign in
                                 </Button>
                             </Col>
-                            <Col sm={2}>
-                                <a href="/signup"> Create an account.</a>
+                            <Col sm={4}>
+                                <a href="/signup" className="btn btn-block btn-secondary"> Create an account.</a>
                             </Col>
                         </FormGroup>
                     </Form>

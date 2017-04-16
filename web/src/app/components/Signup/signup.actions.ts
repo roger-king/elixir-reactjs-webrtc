@@ -1,7 +1,7 @@
 import axios from "axios";
 import {API_URL} from "./../../Constants";
 
-export function SignUpAction(user) {
+export function SignUpAction(data) {
     const endpoint = API_URL + '/users';
     return axios({
         method: "POST",
@@ -9,6 +9,6 @@ export function SignUpAction(user) {
         headers:{
             "content-type": "application/json"
         },
-        data: user
+        data
     });
 }
