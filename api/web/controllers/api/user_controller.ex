@@ -3,6 +3,14 @@ defmodule Huddle.UserController do
 
   alias Huddle.User
 
+  plug Guardian.Plug.EnsureAuthenticated, [handler: Huddle.SessionController] when action in [:rooms]
+
+  def rooms(conn, _params)do
+    current_user = Guardian.Plug.current_resource(conn)
+    rooms = Repo.all(assoc(current_user, :rooms))
+    render(conn, Huddle.RoomView, "index.json", %{rooms: rooms})
+  end
+
   def create(conn, params) do
     IO.puts "Creating Users"
     changeset = User.registration_changeset(%User{}, params)

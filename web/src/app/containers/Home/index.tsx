@@ -13,7 +13,6 @@ export class HomeContainer extends React.Component<any, any> {
                 <Navbar/>
                 <div className="home-container">
                     <div className="card">
-                        <Login/>
                     </div>
                 </div>
             </div>

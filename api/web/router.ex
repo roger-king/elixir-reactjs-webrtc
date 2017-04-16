@@ -26,6 +26,13 @@ defmodule Huddle.Router do
 
     scope "/users" do
       resources "/", UserController, only: [:create]
+      get "/:id/rooms", UserController, :rooms
     end
+
+    scope "/rooms" do
+      resources "/", RoomController, only: [:index, :create]
+      post "/:id/join", RoomController, :join
+    end
+
   end
 end

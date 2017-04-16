@@ -1,70 +1,52 @@
 import * as React from 'react';
-import { reduxForm } from 'redux-form';
-import {User} from './../../actions';
-import {loginAction} from './login.actions';
-import {ILoginProps} from './login.interface';
-import {Row, Col, PageHeader, Form, FormGroup, FormControl, ControlLabel, Button} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
+import {Field, reduxForm} from 'redux-form';
+import {Row, Col, PageHeader, Form, FormGroup, FormControl, Button} from 'react-bootstrap';
+import './login.scss';
 
-export class LoginComponent extends React.Component <any, any>{
-    constructor(props){
+interface ILoginProps {
+    onSubmit: () => void,
+    handleSubmit?: () => void,
+    submitting: boolean,
+    hasError: boolean,
+    fields?: {
+        email: any,
+        password: any
+    }
+}
+
+class LoginComponent extends React.Component <ILoginProps, void> {
+    constructor(props) {
         super(props);
-
-        this.state = {
-            email: '',
-            password: ''
-        }
-
     }
 
-    login(email: string, password: string){
-        let credentials = {
-            email: email,
-            password: password
-        };
-        let user = new User();
-
-        loginAction(credentials)
-            .then(function success(response){
-                console.log('success', response);
-                window.location.href = '/';
-            },function handleError(response){
-                console.log('error', response);
-            });
-    }
-
-    handleChange(key, event){
-        this.setState({...this.state, [key]: event.target.value});
-    }
-
-    render(){
-        const { handleSubmit, submitting} = this.props;
-        return(
+    render() {
+        const {handleSubmit, submitting}= this.props;
+        return (
             <Row>
                 <Col>
                     <PageHeader className="text-center">Login</PageHeader>
-                    <Form
-                        horizontal
-                    >
+                    <Form onSubmit={ handleSubmit }>
                         <FormGroup controlId="formHorizontalEmail">
                             <Col sm={12}>
-                                <FormControl type="email" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange.bind(this,'email')}/>
+                                <Field name="email" component={FormControl} type="email" placeholder="Email"/>
                             </Col>
                         </FormGroup>
 
                         <FormGroup controlId="formHorizontalPassword">
                             <Col sm={12}>
-                                <FormControl type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange.bind(this,'password')}/>
+                                <Field name="password" type="password" placeholder="Password" component={FormControl}/>
                             </Col>
                         </FormGroup>
 
                         <FormGroup>
                             <Col sm={6}>
-                                <Button disabled={submitting} onClick={this.login.bind(this, this.state.email, this.state.password)}>
-                                    Sign in
+                                <Button disabled={submitting} type="submit">
+                                        Sign in
                                 </Button>
                             </Col>
                             <Col sm={4}>
-                                <a href="/signup" className="btn btn-block btn-secondary"> Create an account.</a>
+                                <Link to="/signup" className="btn btn-block btn-secondary"> Create an account.</Link>
                             </Col>
                         </FormGroup>
                     </Form>
@@ -72,4 +54,22 @@ export class LoginComponent extends React.Component <any, any>{
             </Row>
         );
     }
+
+    static validate(values) {
+        const errors = {email: '', password: ''};
+
+        if (!values.username) {
+            errors.email = 'Username is required';
+        }
+        if (!values.password) {
+            errors.password = 'Password is required';
+        }
+
+        return errors
+    }
 }
+
+export let LoginForm = reduxForm({
+    form: 'login',
+    validate: LoginComponent.validate
+})(LoginComponent);

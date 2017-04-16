@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Grid, Row} from 'react-bootstrap';
 import {Auth} from "../../actions/auth/index";
+import './app.scss';
 
 export class AppContainer extends React.Component<any, any> {
     constructor() {

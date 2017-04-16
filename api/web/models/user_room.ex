@@ -15,5 +15,6 @@ defmodule Huddle.UserRoom do
     struct
     |> cast(params, [])
     |> validate_required([])
+    |> unique_constraint(:user_id_room_id)
   end
 end

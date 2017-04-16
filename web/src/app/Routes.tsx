@@ -4,7 +4,7 @@ import {App, Home, Signup, Huddle, Login} from "./containers";
 
 export default (
     <App>
-        <Route exact={true} path="/login" component={Login}/>
+        <Route exact={true} path="/login" component={Login as any}/>
         <Route exact={true} path="/signup" component={Signup}/>
         <Route exact={true} path="/" component={Huddle}/>
     </App>
