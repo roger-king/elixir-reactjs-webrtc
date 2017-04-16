@@ -21,7 +21,7 @@ defmodule Huddle.Endpoint do
   plug Plug.Logger
 
   plug Plug.Parsers,
-    parsers: [:urlencoded, :multipart, :json],
+    parsers: [:multipart, :json, :urlencoded],
     pass: ["*/*"],
     json_decoder: Poison
 
@@ -35,6 +35,8 @@ defmodule Huddle.Endpoint do
     store: :cookie,
     key: "_huddle_key",
     signing_salt: "zI9PP3E1"
+
+  plug CORSPlug
 
   plug Huddle.Router
 end
