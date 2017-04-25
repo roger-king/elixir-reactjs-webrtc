@@ -1,4 +1,4 @@
-defmodule Huddle.GuardianSerializer do
+defmodule Huddle.Web.GuardianSerializer do
   @behaviour Guardian.Serializer
 
   alias Huddle.Repo
