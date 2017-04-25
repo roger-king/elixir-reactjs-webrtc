@@ -38,6 +38,8 @@ defmodule Huddle.Web.Endpoint do
 
   plug Huddle.Web.Router
 
+  plug CORSPlug
+
   @doc """
   Dynamically loads configuration from the system environment
   on startup.
