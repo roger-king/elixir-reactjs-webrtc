@@ -3,7 +3,7 @@ defmodule Huddle.GuardianSerializer do
   @behavior Guardian.Serializer
 
   alias Huddle.Repo
-  alias Huddle.User
+  alias Huddle.Accounts.User
 
   def for_token(user = %User{}), do: {:ok, "User:#{user.id}"}
   def for_token(_), do: {:error, "Unknown resource type"}
