@@ -1,6 +1,7 @@
 import * as React from 'react';
+import {Grid} from 'react-bootstrap';
 //import {Auth} from "../../actions/auth/index";
-//import './app.scss';
+import './app.scss';
 
 export class App extends React.Component<any, any> {
     constructor() {
@@ -23,7 +24,9 @@ export class App extends React.Component<any, any> {
     render() {
         return (
             <div className="app-container">
-                {this.props.children}
+                <Grid>
+                    {this.props.children}
+                </Grid>
             </div>
         );
     }

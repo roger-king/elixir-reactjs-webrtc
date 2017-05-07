@@ -32,7 +32,7 @@ let paths = {
 };
 
 gulp.task('serve', function() {
-    let config = require('./config/webpack/webpack.dev.config');
+    let config = require('./tools/webpack/webpack.dev.config');
 
     config.entry.app = [
         // this modules required to make HRM working
