@@ -53,6 +53,7 @@ export class LoginComponent extends React.Component<any, any> {
                 <Button type="submit" onClick={this.doLogin}>
                     Submit
                 </Button>
+                <a href='/signup'>  create account</a>
             </div>
         );
     }
