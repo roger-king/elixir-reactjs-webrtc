@@ -10,22 +10,21 @@ export class LoginComponent extends React.Component<any, any> {
         super(props);
 
         this.state = { 
-            username: '',
+            email: '',
             password: ''
         }
         this.doLogin = this.doLogin.bind(this);
         this.setPassword = this.setPassword.bind(this);
-        this.setUsername = this.setUsername.bind(this);
+        this.setEmail = this.setEmail.bind(this);
     }
     
     doLogin(){
         let Login = new LoginService()
-        Login.login(this.state.username, this.state.password);
+        Login.login(this.state.email, this.state.password);
     }
 
-    setUsername(event){
-        this.setState({username: event.target.value});
-        console.log(this.state.username);
+    setEmail(event){
+        this.setState({email: event.target.value});
     }
 
     setPassword(event){
@@ -39,9 +38,9 @@ export class LoginComponent extends React.Component<any, any> {
                 <FormGroup>
                     <FormControl 
                         type="text" 
-                        placeholder="User name" 
-                        value={state.username}
-                        onChange={this.setUsername}/>
+                        placeholder="Email" 
+                        value={state.email}
+                        onChange={this.setEmail}/>
                 </FormGroup>
                 <FormGroup>
                     <FormControl 

@@ -1,11 +1,11 @@
 import {AuthService} from './../../services/authentication/auth.service';
 
 export class LoginService {
-    login(username: string, password: string){
+    login(email: string, password: string){
         let Auth = new AuthService();
-        Auth.login(username, password)
-            .then(() => {
-                console.log('testing');
+        Auth.login(email, password)
+            .then((response) => {
+                console.log('testing', response);
             });
     }
 }
