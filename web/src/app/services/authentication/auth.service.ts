@@ -5,9 +5,9 @@ import jwt_decode from 'jwt-decode';
 
 export class AuthService {
     login(username: string, password: string){
-        const endpoint: string = API_URL + '/auth';
+        const endpoint: string = API_URL + '/sessions';
         const data: Object = {
-            username: username,
+            email: username,
             password: password
         };
 

@@ -5,7 +5,7 @@ export class LoginContainer extends React.Component <any, any> {
     render(){
         return(
             <div className="login-container">
-                <Login/>
+                <Login />
             </div>
         );
     }

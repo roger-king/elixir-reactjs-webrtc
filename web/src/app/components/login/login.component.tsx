@@ -5,46 +5,56 @@ import {FormGroup, FormControl, ControlLabel, Button} from 'react-bootstrap';
 import {LoginService} from './login.service';
 
 @observer
-export class LoginComponent extends React.Component<ILoginProps, any> {
+export class LoginComponent extends React.Component<any, any> {
     constructor(props){
         super(props);
 
-        this.onChange = this.onChange.bind(this);
+        this.state = { 
+            username: '',
+            password: ''
+        }
+        this.doLogin = this.doLogin.bind(this);
+        this.setPassword = this.setPassword.bind(this);
+        this.setUsername = this.setUsername.bind(this);
     }
     
     doLogin(){
         let Login = new LoginService()
-        Login.login(this.props.username, this.props.password);
+        Login.login(this.state.username, this.state.password);
     }
 
-    onChange(event){
-        this.props.onChange(event.target.name, event.target.value);
+    setUsername(event){
+        this.setState({username: event.target.value});
+        console.log(this.state.username);
+    }
+
+    setPassword(event){
+        this.setState({password: event.target.value});
     }
 
     render() {
-        const vm = this.props;
-
+        const state = this.state;
         return (
-            <form onSubmit={this.doLogin}>
+            <div>
                 <FormGroup>
                     <FormControl 
                         type="text" 
                         placeholder="User name" 
-                        value={vm.name}
-                        onChange={this.onChange}/>
+                        value={state.username}
+                        onChange={this.setUsername}/>
                 </FormGroup>
                 <FormGroup>
                     <FormControl 
                         type="password" 
                         placeholder="Password" 
-                        value={vm.password}
-                        onChange={this.onChange}/>
+                        value={state.password}
+                        onChange={this.setPassword}/>
                 </FormGroup>
 
-                <Button type="submit">
+                <Button type="submit" onClick={this.doLogin}>
                     Submit
                 </Button>
-            </form>
+            </div>
         );
     }
 }
