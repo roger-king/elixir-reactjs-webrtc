@@ -39,9 +39,9 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :huddle, Huddle.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "appuser",
-  password: "appuser",
-  database: "huddle",
+  username: "roger",
+  password: "123456",
+  database: "huddle_dev",
   hostname: "localhost",
   pool_size: 10
 

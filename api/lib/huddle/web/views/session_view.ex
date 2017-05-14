@@ -3,7 +3,7 @@ defmodule Huddle.Web.SessionView do
 
   def render("show.json", %{user: user, jwt: jwt}) do
     %{
-        data: render_one(user, Huddle.UserView, "user.json"),
+        data: render_one(user, Huddle.Web.UserView, "user.json"),
         meta: %{token: jwt}
     }
   end

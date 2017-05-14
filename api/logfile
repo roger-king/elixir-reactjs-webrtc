@@ -1,0 +1,50 @@
+LOG:  database system was shut down at 2017-04-25 19:28:16 EDT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  role "appuser" does not exist
+FATAL:  role "appuser" does not exist
+FATAL:  role "appuser" does not exist
+FATAL:  role "appuser" does not exist
+FATAL:  role "appuser" does not exist
+FATAL:  role "appuser" does not exist
+FATAL:  role "appuser" does not exist
+FATAL:  role "appuser" does not exist
+FATAL:  role "appuser" does not exist
+FATAL:  role "appuser" does not exist
+FATAL:  role "appuser" does not exist
+FATAL:  role "appuser" does not exist
+FATAL:  role "appuser" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+ERROR:  database "huddle_dev" already exists
+STATEMENT:  CREATE DATABASE "huddle_dev" ENCODING 'UTF8'

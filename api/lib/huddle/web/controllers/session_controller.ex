@@ -51,7 +51,7 @@ defmodule Huddle.Web.SessionController do
   end
 
   defp authenticate(%{"email" => email, "password" => password}) do
-    user = Repo.get_by(Huddle.User, email: String.downcase(email))
+    user = Huddle.Repo.get_by(Huddle.Accounts.User, email: String.downcase(email))
 
     case check_password(user, password) do
         true -> {:ok, user}

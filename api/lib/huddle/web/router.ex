@@ -15,5 +15,9 @@ defmodule Huddle.Web.Router do
       delete "/", SessionController, :delete
       post "/refresh", SessionController, :refresh
     end
+    scope "/users" do
+      resources "/", UserController, only: [:create]
+      get "/:id/rooms", UserController, :rooms
+    end
   end
 end
