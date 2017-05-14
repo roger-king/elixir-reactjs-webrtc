@@ -9,5 +9,11 @@ defmodule Huddle.Web.Router do
 
   scope "/api", Huddle.Web do
     pipe_through :api
+
+    scope "/sessions" do
+      post "/", SessionController, :create
+      delete "/", SessionController, :delete
+      post "/refresh", SessionController, :refresh
+    end
   end
 end
