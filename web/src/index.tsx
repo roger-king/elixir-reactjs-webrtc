@@ -1,19 +1,16 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import {Router} from 'react-router';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {createBrowserHistory} from 'history';
 import {Provider} from 'mobx-react';
+import {App} from './app/app';
+import {states, plugins} from './app/router.config';
+// Import Application Stores
 
-// Import Application Route
-import routes from './app/routes';
-
-const browserHistory = createBrowserHistory();
+const stores = {};
 
 ReactDOM.render(
-    <Provider>
-        <Router history={browserHistory}>
-            {routes}
-        </Router>
+    <Provider {...stores}>
+        <App/>
     </Provider>,
-    document.getElementById("root")
+    document.getElementById('root')
 );

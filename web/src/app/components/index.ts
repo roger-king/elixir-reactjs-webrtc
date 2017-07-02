@@ -1,2 +1,6 @@
-export {LoginComponent} from './login/login.component';
-export {SignupComponent} from './signup/signup.component';
+/**
+ * Global imports of components.
+ * This helps for cleaner imports through out the application.
+ */
+
+// Global imports of all components (do not remove - will break automation!)

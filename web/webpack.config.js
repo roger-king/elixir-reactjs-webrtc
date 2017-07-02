@@ -23,7 +23,7 @@ module.exports = {
         })
     ],
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    devtool: "sourcemap",
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
@@ -33,7 +33,7 @@ module.exports = {
     module: {
         rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+            { test: /\.tsx?$/, exclude: [/tools\/templates/], loader: "awesome-typescript-loader" },
             { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' },
             { test: /\.css$/, loader: 'style-loader!css-loader' },
 

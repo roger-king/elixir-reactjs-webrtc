@@ -1,33 +1,28 @@
 import * as React from 'react';
-import {Grid} from 'react-bootstrap';
-//import {Auth} from "../../actions/auth/index";
+import DevTools, {configureDevtool} from 'mobx-react-devtools';
+import {UIRouter, UIView} from '@uirouter/react';
+import {states, plugins} from './router.config';
+import 'antd/dist/antd.css';
 import './app.scss';
 
-export class App extends React.Component<any, any> {
+/**
+ * Main application container.
+ * This wraps around the entire application
+ * You can set things like app-wide css grid here.
+ * @preferred
+ */
+export class App extends React.Component<{}, {}> {
     constructor() {
         super();
-
-        this.state = {
-            redirected: false
-        }
     }
-
-    /*    componentDidMount(){
-     let auth = new Auth();
-     if(auth.isExpired() === false && this.state.redirected === false){
-     //TODO: use react router for redirecting;
-     this.state.redirected = true;
-     window.location.href = '/login';
-     }
-     }*/
 
     render() {
         return (
-            <div className="app-container">
-                <Grid>
-                    {this.props.children}
-                </Grid>
-            </div>
+            <UIRouter plugins={plugins} states={states}>
+                <div className="app-container">
+                    <UIView/>
+                </div>
+            </UIRouter>
         );
     }
 }
