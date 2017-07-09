@@ -4,10 +4,9 @@ import {createBrowserHistory} from 'history';
 import {Provider} from 'mobx-react';
 import {App} from './app/app';
 import {states, plugins} from './app/router.config';
-import { UserStore } from './app/services/stores';
+// Import Application Stores
 
-const stores = { 
-user_store: new UserStore(), };
+const stores = {};
 
 ReactDOM.render(
     <Provider {...stores}>

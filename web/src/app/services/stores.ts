@@ -4,4 +4,3 @@
  */
 
 // Global imports of all stores (do not remove - will break automation!)
-export { UserStore } from './user/user.store';
