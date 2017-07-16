@@ -5,3 +5,4 @@
  */
 
 // Global imports of services (do not remove - will break automation!)
+export { UserService } from './user/user.service';

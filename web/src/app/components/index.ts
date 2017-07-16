@@ -4,3 +4,5 @@
  */
 
 // Global imports of all components (do not remove - will break automation!)
+export { NavbarComponent } from './navbar/navbar.component';
+export { LoginComponent } from './login/login.component';
