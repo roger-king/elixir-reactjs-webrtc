@@ -2,7 +2,6 @@ defmodule Huddle.Web.SessionController do
   use Huddle.Web, :controller
 
   def create(conn, params) do
-    IO.inspect params
     case authenticate(params) do
         {:ok, user} ->
             new_conn = Guardian.Plug.api_sign_in(conn, user, :access)
