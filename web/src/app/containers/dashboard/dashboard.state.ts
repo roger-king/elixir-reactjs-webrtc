@@ -9,5 +9,8 @@ import { ReactStateDeclaration } from '@uirouter/react';
 export const DashboardState: ReactStateDeclaration = {
     name: 'dashboard',
     url: '/dashboard',
-    component: Dashboard
+    component: Dashboard,
+    data: {
+        autheticate: true
+    }
 };
