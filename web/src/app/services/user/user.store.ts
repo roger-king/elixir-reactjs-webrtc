@@ -21,4 +21,16 @@ export class UserStore {
             });
     }
 
+    @action
+    public logout() {
+        let service: UserService = new UserService();
+        return service.logout();
+    }
+
+    @action
+    public isAuthenticated(): boolean {
+        let service: UserService = new UserService();
+
+        return service.isAuthenticated();
+    }
 }

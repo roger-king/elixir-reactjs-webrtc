@@ -36,6 +36,16 @@ export class UserService {
 
     public logout() {
         // Remove auth-token from localstorage
+        let vm = this;
+        let cb = { status: 200, msg: 'logged out.' };
+        if (vm.getToken) {
+            window.localStorage.removeItem(vm.token_name);
+        } else {
+            cb.status = 500;
+            cb.msg = 'no auth-token available'
+        }
+
+        return cb;
     }
 
     public get() {
@@ -46,10 +56,26 @@ export class UserService {
         // delete user after authing their password to delete account;
     }
 
+    public isAuthenticated() {
+        let vm = this;
+        let isExpired: boolean = false;
+
+        if (vm.getToken()) {
+            console.log(jwt_decode(vm.getToken()));
+        } else {
+            isExpired = false;
+        }
+
+        return isExpired;
+    }
+
+    public getToken() {
+        return window.localStorage.getItem(this.token_name);
+    }
+
     private setToken(token) {
         let vm = this;
         if (token) {
-            console.log('setting token');
             window.localStorage.setItem(vm.token_name, token);
         } else {
             window.localStorage.removeItem(vm.token_name);
