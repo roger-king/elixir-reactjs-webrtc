@@ -10,7 +10,7 @@ export class HomeContainer extends React.Component<any, any> {
     render() {
         return (
             <div>
-                <Navbar />
+                <Navbar transition={this.props.transition} />
             </div>
         );
     }

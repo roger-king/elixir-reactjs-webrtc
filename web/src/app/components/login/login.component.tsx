@@ -1,7 +1,7 @@
 import './login.component.scss';
 import * as React from 'react';
-import { inject, observer } from 'mobx-react';
 import { UIRouterReact } from '@uirouter/react';
+import { ILoginFormProps } from './login.interface';
 import { Form, Button, Input, Icon, Checkbox } from 'antd';
 const FormItem = Form.Item;
 
@@ -9,9 +9,7 @@ const FormItem = Form.Item;
  * LoginComponent
  */
 
-@inject('user_store')
-@observer
-class LoginForm extends React.Component<any, any> {
+export class LoginComponent extends React.Component<any, any> {
     constructor() {
         super();
     }
@@ -20,16 +18,7 @@ class LoginForm extends React.Component<any, any> {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
-                this.props.user_store
-                    .login(values.email, values.password)
-                    .then((response) => {
-                        if (response.status === 201) {
-
-                        } else {
-
-                        }
-                    });
+                this.props.doLogin(values.email, values.password);
             }
         });
     }
@@ -70,16 +59,6 @@ class LoginForm extends React.Component<any, any> {
                     </FormItem>
                 </Form>
             </div>
-        );
-    }
-}
-
-const WrappedLoginForm = Form.create()(LoginForm);
-
-export class LoginComponent extends React.Component<any, any> {
-    render() {
-        return (
-            <WrappedLoginForm />
         );
     }
 }

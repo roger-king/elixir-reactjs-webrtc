@@ -1,29 +1,43 @@
 import './navbar.component.scss';
 import * as React from 'react';
+import { inject, observer } from 'mobx-react';
 import { Row, Col, Button, Popover } from 'antd';
 import { LoginComponent as Login } from './../login/login.component';
+import { INavbarProps, INavbarState } from './navbar.interface';
 
 /**
  * NavbarComponent
  */
 
-export class NavbarComponent extends React.Component<any, any> {
+@inject('user_store')
+@observer
+export class NavbarComponent extends React.Component<any, INavbarState> {
     constructor() {
         super();
         this.state = {
-            isLoggingIn: false
+            isLoggedIn: false
         };
 
+        this.doLogin = this.doLogin.bind(this);
         this.showLogin = this.showLogin.bind(this);
     }
 
-    showLogin(isLoggingIn): void {
-        this.setState({ isLoggingIn });
+    private doLogin(email: string, password: string) {
+        this.props.user_store.login(email, password)
+            .then((response) => {
+                if (response.status === 201) {
+                    this.props.transition.router.stateService.go('dashboard', {}, { reload: true });
+                }
+            });
+    }
+
+    showLogin(isLoggedIn): void {
+        this.setState({ isLoggedIn });
     }
 
     render() {
         const loginContent = (
-            <Login />
+            <Login doLogin={this.doLogin} />
         );
 
         return (
